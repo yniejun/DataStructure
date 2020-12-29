@@ -40,18 +40,18 @@ public class LinkedList {
         list.show();
 
 
-
 //        reversePrint(list.getHead());
 
 
     }
+
     // select the n-k node
-    public static HeroNode findInverseK(SingleLinkedList list, int K){
+    public static HeroNode findInverseK(SingleLinkedList list, int K) {
         HeroNode head = list.getHead();
         HeroNode current = head.next;
         HeroNode currentInverseK = current;
         int count = 0;
-        while(true){
+        while (true) {
             if (current.next == null) {
                 return currentInverseK;
             }
@@ -64,46 +64,47 @@ public class LinkedList {
             }
         }
     }
-     public static void inverseList(HeroNode head){
-         HeroNode first = head.next;
-         while(true){
-             if (first.next == null){
-                 return;
-             }
-             HeroNode currentFirst = first.next;
-             first.next = currentFirst.next;
-             currentFirst.next = head.next;
-             head.next = currentFirst;
-         }
-     }
 
-    public static void inverseList(HeroNode head, int m, int n){
-        HeroNode beforeHead = new HeroNode(0,"","");
+    public static void inverseList(HeroNode head) {
+        HeroNode first = head.next;
+        while (true) {
+            if (first.next == null) {
+                return;
+            }
+            HeroNode currentFirst = first.next;
+            first.next = currentFirst.next;
+            currentFirst.next = head.next;
+            head.next = currentFirst;
+        }
+    }
+
+    public static void inverseList(HeroNode head, int m, int n) {
+        HeroNode beforeHead = new HeroNode(0, "", "");
         beforeHead.next = head;
         HeroNode virtualHead = beforeHead;
-        for (int i = 1; i < m ; i++) {
+        for (int i = 1; i < m; i++) {
             virtualHead = virtualHead.next;
         }
         HeroNode first = virtualHead.next;
         int count = m;
-        while(true){
-            if (count >= n || virtualHead.next == null){
+        while (true) {
+            if (count >= n || virtualHead.next == null) {
                 return;
             }
             HeroNode currentFirst = first.next;
-            first.next = currentFirst.next ;
+            first.next = currentFirst.next;
             currentFirst.next = virtualHead.next;
             virtualHead.next = currentFirst;
             count++;
         }
     }
 
-     public static void inverseListWithoutHead(HeroNode head){
+    public static void inverseListWithoutHead(HeroNode head) {
         HeroNode temporaryHead = new HeroNode(0, "", "");
         HeroNode first = head;
         HeroNode next = null;
-        while(true){
-            if (head.next == null){
+        while (true) {
+            if (head.next == null) {
                 break;
             }
             next = first.next;
@@ -113,7 +114,7 @@ public class LinkedList {
         }
     }
 
-    public static void reversePrint(HeroNode head){
+    public static void reversePrint(HeroNode head) {
         if (head == null) {
             System.out.println("Empty list");
         }
@@ -136,9 +137,10 @@ class SingleLinkedList {
     // initialize head node
     private final HeroNode head = new HeroNode(0, "1", "1");
 
-    public HeroNode getHead(){
+    public HeroNode getHead() {
         return head;
     }
+
     // find the end of the linkedlist
     // next point towards new
     public void add(HeroNode hero) {
