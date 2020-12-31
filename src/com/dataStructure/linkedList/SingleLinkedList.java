@@ -2,7 +2,7 @@ package com.dataStructure.linkedList;
 
 import java.util.Stack;
 
-public class LinkedList {
+public class SingleLinkedList {
     public static void main(String[] args) {
         // create HeroNode
         HeroNode hero1 = new HeroNode(1, "firstHero", "NO1");
@@ -11,7 +11,7 @@ public class LinkedList {
         HeroNode hero4 = new HeroNode(4, "fourthHero", "NO4");
 
         // create list
-        SingleLinkedList list = new SingleLinkedList();
+        CSingleLinkedList list = new CSingleLinkedList();
         list.addByOrder(hero1);
         list.addByOrder(hero3);
         list.addByOrder(hero4);
@@ -46,7 +46,7 @@ public class LinkedList {
     }
 
     // select the n-k node
-    public static HeroNode findInverseK(SingleLinkedList list, int K) {
+    public static HeroNode findInverseK(CSingleLinkedList list, int K) {
         HeroNode head = list.getHead();
         HeroNode current = head.next;
         HeroNode currentInverseK = current;
@@ -133,7 +133,7 @@ public class LinkedList {
 }
 
 // defined singleLinkedList to manage hero data
-class SingleLinkedList {
+class CSingleLinkedList {
     // initialize head node
     private final HeroNode head = new HeroNode(0, "1", "1");
 
