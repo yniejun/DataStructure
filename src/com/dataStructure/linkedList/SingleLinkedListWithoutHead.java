@@ -1,5 +1,7 @@
 package com.dataStructure.linkedList;
 
+import java.util.Stack;
+
 public class SingleLinkedListWithoutHead {
     public static void main(String[] args) {
         // create list
@@ -9,11 +11,13 @@ public class SingleLinkedListWithoutHead {
 
         // create list
         ListNode n3 = new ListNode(4, null);
-        ListNode n2 = new ListNode(3, n3);
+        ListNode n2 = new ListNode(2, null);
         ListNode n1 = new ListNode(1, n2);
 
         Solution s = new Solution();
-        show(s.mergeTwoLists(node1,n1));
+//        show(s.mergeTwoLists(node1,n1));
+//        System.out.println(s.isPalindrome(n1));
+        show(s.removeNthFromEnd(n1, 2));
 
     }
     public static void show(ListNode l){
@@ -25,6 +29,53 @@ public class SingleLinkedListWithoutHead {
 }
 
 class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if (head == null || head.next == null){
+            return false;
+        }
+        ListNode temp = head;
+        Stack<Integer> stack = new Stack();
+        while (temp != null) {
+            stack.add(temp.val);
+            temp = temp.next;
+        }
+        while(true){
+            if (head.val != stack.pop()){
+                return false;
+            }
+            if (head.next == null) {
+                return true;
+            }
+            head = head.next;
+        }
+    }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if(head == null || (head.next == null && n != 1)){
+            return head;
+        }
+        if(head.next == null){
+            return null;
+        }
+        ListNode newHead = new ListNode();
+        newHead.next = head;
+        ListNode currentInverse = newHead;
+        int count = 0;
+        while (true) {
+            if (head.next == null) {
+                currentInverse.next = currentInverse.next.next;
+                return newHead.next;
+            }
+            if (count == n - 1) {
+                head = head.next;
+                currentInverse = currentInverse.next;
+            } else {
+                head = head.next;
+                count++;
+            }
+        }
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
