@@ -1,7 +1,6 @@
 package com.dataStructure.stack;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Calculator {
     public static void main(String[] args) {
@@ -34,28 +33,28 @@ public class Calculator {
                         cal.operator.add(chCurrent);
                     }
                 } else if (cal.isNumber(chCurrent)) {
-                    cal.num.add((int) chCurrent - 48);
+                    cal.number.add((int) chCurrent - 48);
                 } else {
                     System.out.println("Wrong input");
                     break;
                 }
                 if (needCal) {
-                    num1 = cal.num.pop();
-                    num2 = cal.num.pop();
+                    num1 = cal.number.pop();
+                    num2 = cal.number.pop();
                     char ope = cal.operator.pop();
                     num3 = cal.calculate(num1, num2, ope);
-                    cal.num.add(num3);
+                    cal.number.add(num3);
                     cal.operator.add(chCurrent);
                 }
             }
-            while(cal.num.size() != 1){
-                num1 = cal.num.pop();
-                num2 = cal.num.pop();
+            while(cal.number.size() != 1){
+                num1 = cal.number.pop();
+                num2 = cal.number.pop();
                 char ope = cal.operator.pop();
                 num3 = cal.calculate(num2, num1, ope);
-                cal.num.add(num3);
+                cal.number.add(num3);
             }
-            System.out.println(cal.num.pop());
+            System.out.println(cal.number.pop());
         }
     }
 }
