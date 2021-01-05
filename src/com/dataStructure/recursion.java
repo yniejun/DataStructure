@@ -24,10 +24,12 @@ public class recursion {
 //                System.out.println("");
 //            }
 //        }
-        Queen queen = new Queen();
+        System.out.println(solveNQueens(1));
+    }
+    public static List<List<String>> solveNQueens(int n) {
+        Queen queen = new Queen(n);
         queen.findSolution();
-        System.out.println(Queen.count);
-
+        return queen.list;
     }
 }
 
@@ -117,22 +119,25 @@ class Queen {
     public int space = 0;
     public int location = 1;
     public static int count = 0;
-    public static int steps = 0;
-    int n = 8;
+    int n;
+    public static List<List<String>> list = new ArrayList<>();
 
+    public Queen(int n) {
+        this.n = n;
+    }
 
     public void findSolution() {
         findSolution(new int[n][n], 0, 0);
     }
 
     public void findSolution(int[][] map, int X, int Y) {
-        if (X > n - 1) {
-            return;
-        }
-
         boolean flag = this.hasConflict(map, X, Y);
         if (!flag && X == n - 1) {
             count++;
+            map[X][Y] = location;
+            list.add(output(map));
+            map[X][Y] = space;
+            return;
         }
 
         if (!flag) {
@@ -164,5 +169,21 @@ class Queen {
             }
         }
         return false;
+    }
+
+    public List<String> output(int[][] map) {
+        List<String> strList = new ArrayList<>();
+        for (int i = 0; i < map.length; i++) {
+            String str = "";
+            for (int j = 0; j < map.length; j++) {
+                if (map[i][j] == location) {
+                    str = str + "Q";
+                } else {
+                    str = str + ".";
+                }
+            }
+            strList.add(str);
+        }
+        return strList;
     }
 }
