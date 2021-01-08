@@ -1,6 +1,6 @@
 package com.dataStructure.sort;
 
-import java.util.LinkedList;
+import java.util.*;
 
 public class InsertSort {
     public static void main(String[] args) {
