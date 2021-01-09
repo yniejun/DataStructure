@@ -1,4 +1,4 @@
 package com.dataStructure.sort;
 
-public class RedixSort {
+public class RadixSort {
 }
