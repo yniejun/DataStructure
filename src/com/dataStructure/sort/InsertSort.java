@@ -22,8 +22,8 @@ public class InsertSort {
                 list[shiftIndex + 1] = insertVal;
             }
         }
-        for (int i = 0; i < list.length; i++) {
-            System.out.print(list[i] + " ");
+        for (int j : list) {
+            System.out.print(j + " ");
         }
     }
 
