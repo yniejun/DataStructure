@@ -1,10 +1,11 @@
 package com.dataStructure.search;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] list = {1, 2, 5, 9, 10, 15};
+        int[] list = {1, 2, 5, 5, 5, 5, 5, 9, 10, 15};
         System.out.println("Search number: ('q' to quit)");
         String key = null;
         Scanner scan = new Scanner(System.in);
@@ -15,8 +16,8 @@ public class BinarySearch {
                 System.out.println("END");
                 flag = false;
             } else {
-                int index = binarySearch(list, 0, list.length - 1, Integer.parseInt(key));
-                if (index != -1) {
+                ArrayList<Integer> index = binarySearch(list, 0, list.length - 1, Integer.parseInt(key));
+                if (!index.isEmpty()) {
                     System.out.println(index);
                 } else {
                     System.out.println("Can not find the number. Please change the search num and try again.");
@@ -25,9 +26,11 @@ public class BinarySearch {
         }
     }
 
-    public static int binarySearch(int[] list, int left, int right, int searchNum) {
+
+    public static ArrayList<Integer> binarySearch(int[] list, int left, int right, int searchNum) {
+        ArrayList<Integer> rtn = new ArrayList<>();
         if (left > right) {
-            return -1;
+            return rtn;
         }
         int midIndex = (left + right) / 2;
         if (list[midIndex] > searchNum) {
@@ -35,8 +38,18 @@ public class BinarySearch {
         } else if (list[midIndex] < searchNum) {
             return binarySearch(list, midIndex + 1, right, searchNum);
         } else {
-            return midIndex;
+            rtn.add(midIndex);
+            int temp = midIndex - 1;
+            while (temp > left && list[temp] == searchNum) {
+                rtn.add(temp);
+                temp--;
+            }
+            temp = midIndex + 1;
+            while (temp < right && list[temp] == searchNum) {
+                rtn.add(temp);
+                temp++;
+            }
+            return rtn;
         }
-
     }
 }
