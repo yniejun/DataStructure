@@ -1,4 +1,6 @@
-package com.dataStructure.binaryTree;
+package com.dataStructure.Tree.binaryTree;
+
+import java.util.Stack;
 
 public class BinaryTree {
     private final int NORMAL = 0;
@@ -19,6 +21,7 @@ public class BinaryTree {
         }
     }
 
+
     public void inorder() {
         if (this.rootNode != null) {
             this.rootNode.inorder();
@@ -26,6 +29,7 @@ public class BinaryTree {
             System.out.println("empty tree");
         }
     }
+
 
     public void postorder() {
         if (this.rootNode != null) {
@@ -35,6 +39,7 @@ public class BinaryTree {
         }
     }
 
+
     public void preorderQuery(int id) {
         if (this.rootNode != null) {
             this.rootNode.preorderQuery(id);
@@ -43,6 +48,7 @@ public class BinaryTree {
         }
     }
 
+
     public void delNode(int id) {
         if (this.rootNode != null) {
             this.rootNode.delNode(id);
@@ -50,6 +56,7 @@ public class BinaryTree {
             System.out.println("empty tree");
         }
     }
+
 
     // inorder threaded
     public void inThreadedNodes(TreeNode node) {
@@ -76,6 +83,7 @@ public class BinaryTree {
         }
     }
 
+
     public void inTraverseThreadedNodes() {
         TreeNode node = rootNode;
         while (node != null) {
@@ -90,6 +98,7 @@ public class BinaryTree {
             node = node.getRightSubNode();
         }
     }
+
 
     // preorder threaded
     public void preThreadedNodes(TreeNode node) {
@@ -118,6 +127,22 @@ public class BinaryTree {
         }
     }
 
+
+    public static void preRootTravel(TreeNode root){
+        if (root != null) {
+            Stack<TreeNode> stack = new Stack<>();
+            while (root != null || !stack.isEmpty()) {
+                while(root != null) {
+                    System.out.print(root.val);
+                    stack.push(root);
+                    root = root.leftSubNode;
+                }
+                root = stack.pop().rightSubNode;
+            }
+        }
+    }
+
+
     public void preTraverseThreadedNodes() {
         TreeNode node = rootNode;
         while (node != null) {
@@ -134,6 +159,7 @@ public class BinaryTree {
             node = node.getRightSubNode();
         }
     }
+
 
     // postorder threaded
     public void postThreadedNodes(TreeNode node) {
@@ -157,6 +183,7 @@ public class BinaryTree {
             System.out.println("Node not existed");
         }
     }
+
 
     public void postTraverseThreadedNodes(TreeNode node, int type) {
         if (node != null) {

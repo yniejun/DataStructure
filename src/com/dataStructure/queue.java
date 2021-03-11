@@ -36,7 +36,6 @@ public class queue {
                     loop = false;
                     break;
             }
-
         }
     }
 }

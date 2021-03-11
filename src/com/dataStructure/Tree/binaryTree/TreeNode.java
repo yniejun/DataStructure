@@ -1,4 +1,4 @@
-package com.dataStructure.binaryTree;
+package com.dataStructure.Tree.binaryTree;
 
 public class TreeNode {
     public int id;
