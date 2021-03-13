@@ -4,13 +4,10 @@ import java.util.HashMap;
 
 public class LongestSubstring {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("dvdf"));
+        System.out.println(lengthOfLongestSubstring(""));
     }
 
     public static int lengthOfLongestSubstring(String s) {
-        if (s.isEmpty()) {
-            return 0;
-        }
         if (s.length() == 1) {
             return 1;
         }
